@@ -1,7 +1,9 @@
 from __future__ import print_function
 
 import numpy as np
-
+import sys
+sys.path.append('/kaggle/working/CLAM/datasets/dataset_generic')
+sys.path.append('/kaggle/working/CLAM/utils')
 import argparse
 import torch
 import torch.nn as nn
@@ -103,7 +105,8 @@ elif args.task == 'kaggle':
                                       args.data_root_dir, 'features'),
                                   shuffle=False,
                                   print_info=True,
-                                  label_dict={'CC':0, 'EC':1, 'HGSC':2, 'LGSC':3, 'MC':4},
+                                  label_dict={'CC': 0, 'EC': 1,
+                                              'HGSC': 2, 'LGSC': 3, 'MC': 4},
                                   patient_strat=False,
                                   ignore=[])
 
