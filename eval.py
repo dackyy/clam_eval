@@ -383,7 +383,6 @@ import pandas as pd
 from utils.utils import *
 from math import floor
 import matplotlib.pyplot as plt
-from datasets.dataset_generic import Generic_MIL_Dataset
 import h5py
 from utils.eval_utils import *
 
