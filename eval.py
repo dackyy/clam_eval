@@ -103,7 +103,7 @@ elif args.task == 'kaggle':
                                       args.data_root_dir, 'features'),
                                   shuffle=False,
                                   print_info=True,
-                                  label_dict={'CC': 0, 'HGSC': 1},
+                                  label_dict={'CC':0, 'EC':1, 'HGSC':2, 'LGSC':3, 'MC':4},
                                   patient_strat=False,
                                   ignore=[])
 
