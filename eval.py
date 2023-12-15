@@ -15,7 +15,7 @@ import pandas as pd
 from utils.utils import *
 from math import floor
 import matplotlib.pyplot as plt
-from dataset_generic import Generic_WSI_Classification_Dataset, Generic_MIL_Dataset, save_splits
+import dataset_generic
 import h5py
 from utils.eval_utils import *
 
