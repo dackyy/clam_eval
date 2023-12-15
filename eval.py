@@ -367,8 +367,6 @@ class Generic_Split(Generic_MIL_Dataset):
 		return len(self.slide_data)
 
 
-from __future__ import print_function
-
 import numpy as np
 import sys
 sys.path.append('/kaggle/working/CLAM/*')
