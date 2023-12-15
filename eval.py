@@ -6,6 +6,7 @@ sys.path.append('/kaggle/working/CLAM/*')
 sys.path.append('/kaggle/working/CLAM/datasets/*')
 sys.path.append('/kaggle/working/CLAM/datasets/dataset_generic')
 sys.path.append('/kaggle/working/CLAM/utils/*')
+from datasets import dataset_generic
 import argparse
 import torch
 import torch.nn as nn
@@ -15,7 +16,7 @@ import pandas as pd
 from utils.utils import *
 from math import floor
 import matplotlib.pyplot as plt
-from datasets.dataset_generic import Generic_WSI_Classification_Dataset, Generic_MIL_Dataset, save_splits
+# from datasets.dataset_generic import Generic_WSI_Classification_Dataset, Generic_MIL_Dataset, save_splits
 import h5py
 from utils.eval_utils import *
 
