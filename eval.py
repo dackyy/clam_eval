@@ -2,6 +2,8 @@ from __future__ import print_function
 
 import numpy as np
 import sys
+sys.path.append('/kaggle/working/CLAM/*')
+sys.path.append('/kaggle/working/CLAM/datasets/*')
 sys.path.append('/kaggle/working/CLAM/datasets/dataset_generic')
 sys.path.append('/kaggle/working/CLAM/utils/*')
 import argparse
