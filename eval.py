@@ -919,7 +919,6 @@ from utils.utils import *
 from math import floor
 import matplotlib.pyplot as plt
 import h5py
-from utils.eval_utils import *
 
 # Training settings
 parser = argparse.ArgumentParser(description='CLAM Evaluation Script')
