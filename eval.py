@@ -3,9 +3,8 @@ from __future__ import print_function
 import numpy as np
 import sys
 sys.path.append('/kaggle/working/CLAM/*')
-sys.path.append('/kaggle/working/CLAM/datasets/*')
-sys.path.append('/kaggle/working/CLAM/datasets/dataset_generic')
 sys.path.append('/kaggle/working/CLAM/utils/*')
+sys.path.append('/kaggle/working/CLAM/datasets/*')
 import argparse
 import torch
 import torch.nn as nn
@@ -15,7 +14,7 @@ import pandas as pd
 from utils.utils import *
 from math import floor
 import matplotlib.pyplot as plt
-import dataset_generic
+import datasets.dataset_generic import *
 import h5py
 from utils.eval_utils import *
 
