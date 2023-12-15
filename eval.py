@@ -3,7 +3,7 @@ from __future__ import print_function
 import numpy as np
 import sys
 sys.path.append('/kaggle/working/CLAM/datasets/dataset_generic')
-sys.path.append('/kaggle/working/CLAM/utils')
+sys.path.append('/kaggle/working/CLAM/utils/*')
 import argparse
 import torch
 import torch.nn as nn
