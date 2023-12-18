@@ -358,8 +358,8 @@ class Generic_Split(Generic_MIL_Dataset):
 		self.data_dir = data_dir
 		self.num_classes = num_classes
 		self.slide_cls_ids = [[] for i in range(self.num_classes)]
-		for i in range(self.num_classes):
-			self.slide_cls_ids[i] = np.where(self.slide_data['label'] == i)[0]
+		# for i in range(self.num_classes):
+		# 	self.slide_cls_ids[i] = np.where(self.slide_data['label'] == i)[0]
 
 	def __len__(self):
 		return len(self.slide_data)
