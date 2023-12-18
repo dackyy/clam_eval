@@ -367,7 +367,6 @@ class Generic_Split(Generic_MIL_Dataset):
 
 import numpy as np
 import torch
-from utils.utils import *
 import os
 from models.model_mil import MIL_fc, MIL_fc_mc
 from models.model_clam import CLAM_MB, CLAM_SB
@@ -912,7 +911,6 @@ import torch.nn as nn
 import pdb
 import os
 import pandas as pd
-from utils.utils import *
 from math import floor
 import matplotlib.pyplot as plt
 import h5py
