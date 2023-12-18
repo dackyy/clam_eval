@@ -1609,6 +1609,7 @@ if __name__ == "__main__":
     if args.inference:
         df = pd.read_csv('/kaggle/working/test.csv')
         submission = df[['slide_id']]
+        submission.rename(columns={'slide_id': 'image_id'}, inplace=True)
         temp = []
         for i, pr in enumerate(pred):
             if pr == 0:
