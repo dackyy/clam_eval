@@ -1549,7 +1549,7 @@ if args.task == 'kaggle':
     args.n_classes = 5
     dataset = Generic_MIL_Dataset(csv_path='/kaggle/working/test.csv',
                                   data_dir=os.path.join(
-                                      args.data_root_dir, 'features'),
+                                      '/kaggle/working/features/pt_files/'),
                                   shuffle=False,
                                   print_info=True,
                                   label_dict={'CC': 0, 'EC': 1,
