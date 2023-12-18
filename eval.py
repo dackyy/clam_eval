@@ -1,3 +1,4 @@
+from __future__ import print_function, division
 import pickle
 import torch
 import numpy as np
@@ -164,8 +165,6 @@ def initialize_weights(module):
 			nn.init.constant_(m.weight, 1)
 			nn.init.constant_(m.bias, 0)
 
-
-from __future__ import print_function, division
 import os
 import torch
 import numpy as np
