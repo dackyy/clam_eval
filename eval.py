@@ -996,7 +996,7 @@ elif args.task == 'noUS':
 
 elif args.task == 'kaggle':
     args.n_classes = 2
-    dataset = Generic_MIL_Dataset(csv_path='/kaggle/working/data/test.csv',
+    dataset = Generic_MIL_Dataset(csv_path='/kaggle/working/patch/process_list_autogen.csv',
                                   data_dir=os.path.join(
                                       args.data_root_dir, 'features'),
                                   shuffle=False,
