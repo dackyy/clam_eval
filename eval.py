@@ -74,8 +74,8 @@ class Generic_WSI_Classification_Dataset(Dataset):
 		# self.patient_data_prep(patient_voting)
 		# self.cls_ids_prep()
 
-		if print_info:
-			self.summarize()
+		# if print_info:
+		# 	self.summarize()
 
 	def cls_ids_prep(self):
 		# store ids corresponding each class at the patient or case level
