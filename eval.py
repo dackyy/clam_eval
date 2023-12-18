@@ -62,7 +62,7 @@ class Generic_WSI_Classification_Dataset(Dataset):
 
 		slide_data = pd.read_csv(csv_path)
 		slide_data = self.filter_df(slide_data, filter_dict)
-		slide_data = self.df_prep(slide_data, self.label_dict, ignore, self.label_col)
+		# slide_data = self.df_prep(slide_data, self.label_dict, ignore, self.label_col)
 
 		###shuffle data
 		if shuffle:
@@ -106,19 +106,19 @@ class Generic_WSI_Classification_Dataset(Dataset):
 		
 		# self.patient_data = {'case_id':patients, 'label':np.array(patient_labels)}
 
-	# @staticmethod
-	def df_prep(data, label_dict, ignore, label_col):
-		# if label_col != 'label':
-		# 	data['label'] = data[label_col].copy()
+	# # @staticmethod
+	# def df_prep(data, label_dict, ignore, label_col):
+	# 	# if label_col != 'label':
+	# 	# 	data['label'] = data[label_col].copy()
 
-		# mask = data['label'].isin(ignore)
-		# data = data[~mask]
-		# data.reset_index(drop=True, inplace=True)
-		# for i in data.index:
-		# 	key = data.loc[i, 'label']
-		# 	data.at[i, 'label'] = label_dict[key]
+	# 	# mask = data['label'].isin(ignore)
+	# 	# data = data[~mask]
+	# 	# data.reset_index(drop=True, inplace=True)
+	# 	# for i in data.index:
+	# 	# 	key = data.loc[i, 'label']
+	# 	# 	data.at[i, 'label'] = label_dict[key]
 
-		return data
+	# 	return data
 
 	def filter_df(self, df, filter_dict={}):
 		if len(filter_dict) > 0:
