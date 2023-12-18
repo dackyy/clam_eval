@@ -1607,9 +1607,13 @@ if __name__ == "__main__":
     print('result \n',pred)
     final_df = pd.DataFrame({'folds': folds, 'test_auc': all_auc, 'test_acc': all_acc})
     if args.inference:
-	    label_dict={'CC': 0, 'EC': 1,'HGSC': 2, 'LGSC': 3, 'MC': 4}
-	    df = pd.read_csv('/kaggle/working/test.csv')
-	    submission = df[['image_id']]
-	    numbers_array = range(1, len(df) + 1)
-	    submission['label'] = numbers_array
-	    print(submission)
+	label_dict={'CC': 0, 'EC': 1,'HGSC': 2, 'LGSC': 3, 'MC': 4}
+	df = pd.read_csv('/kaggle/working/test.csv')
+	print(df)
+	submission = df[['slide_id']]
+	numbers_array = range(1, len(df) + 1)
+	temp = []
+	for pr in pred:
+		temp.append(label_dict[pr])
+	submission['label'] = temp
+	print(submission)
