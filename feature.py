@@ -492,8 +492,8 @@ def resnet50_baseline(pretrained=False):
 
 def load_pretrained_weights(model, name):
     # pretrained_dict = model_zoo.load_url(model_urls[name])
-    # model.load_state_dict(pretrained_dict, strict=False)
-    model = torch.load("/kaggle/input/resnet/resnet50-19c8e357.pth")
+    pretrained_dict = torch.load("/kaggle/input/resnet/resnet50-19c8e357.pth")
+    model.load_state_dict(pretrained_dict, strict=False)
     return model
 
 
