@@ -1622,6 +1622,7 @@ if __name__ == "__main__":
                 temp.append('LGSC')
             elif pr == 4:
                 temp.append('MC')
+
         submission['label'] = temp
         print(submission)
-        submission.to_csv("submission.csv", index=False)
+        submission.to_csv("/kaggle/working/submission.csv", index=False)
