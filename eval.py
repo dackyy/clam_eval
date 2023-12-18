@@ -1621,6 +1621,6 @@ if __name__ == "__main__":
                 temp.append('LGSC')
             elif pr == 4:
                 temp.append('MC')
-        submission['label'] = pred
+        submission['label'] = temp
         print(submission)
         submission.to_csv("submission.csv", index=False)
