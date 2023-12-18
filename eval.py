@@ -89,22 +89,22 @@ class Generic_WSI_Classification_Dataset(Dataset):
 			self.slide_cls_ids[i] = np.where(self.slide_data['label'] == i)[0]
 
 	def patient_data_prep(self, patient_voting='max'):
-		patients = np.unique(np.array(self.slide_data['case_id'])) # get unique patients
-		patient_labels = []
+		# patients = np.unique(np.array(self.slide_data['case_id'])) # get unique patients
+		# patient_labels = []
 		
-		for p in patients:
-			locations = self.slide_data[self.slide_data['case_id'] == p].index.tolist()
-			assert len(locations) > 0
-			label = self.slide_data['label'][locations].values
-			if patient_voting == 'max':
-				label = label.max() # get patient label (MIL convention)
-			elif patient_voting == 'maj':
-				label = stats.mode(label)[0]
-			else:
-				raise NotImplementedError
-			patient_labels.append(label)
+		# for p in patients:
+		# 	locations = self.slide_data[self.slide_data['case_id'] == p].index.tolist()
+		# 	assert len(locations) > 0
+		# 	label = self.slide_data['label'][locations].values
+		# 	if patient_voting == 'max':
+		# 		label = label.max() # get patient label (MIL convention)
+		# 	elif patient_voting == 'maj':
+		# 		label = stats.mode(label)[0]
+		# 	else:
+		# 		raise NotImplementedError
+		# 	patient_labels.append(label)
 		
-		self.patient_data = {'case_id':patients, 'label':np.array(patient_labels)}
+		# self.patient_data = {'case_id':patients, 'label':np.array(patient_labels)}
 
 	@staticmethod
 	def df_prep(data, label_dict, ignore, label_col):
