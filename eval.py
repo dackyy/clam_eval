@@ -1604,10 +1604,12 @@ if __name__ == "__main__":
             all_acc.append(1-test_error)
             df.to_csv(os.path.join(args.save_dir, 'fold_{}.csv'.format(
                 folds[ckpt_idx])), index=False)
-    print(pred, '왜 안나오냐..')
+    print('result \n',pred)
     final_df = pd.DataFrame({'folds': folds, 'test_auc': all_auc, 'test_acc': all_acc})
     if args.inference:
-	    print(final_df)
-	    final_df.to_csv(os.path.join('/kaggle/working/', 'summary.csv'))
-	    pass
-    
+	    label_dict={'CC': 0, 'EC': 1,'HGSC': 2, 'LGSC': 3, 'MC': 4}
+	    df = pd.read_csv(file_path)
+	    submission = df[['image_id']]
+	    numbers_array = range(1, len(df) + 1)
+	    submission['label'] = numbers_array
+	    print(submission)
