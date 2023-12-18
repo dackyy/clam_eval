@@ -1608,7 +1608,7 @@ if __name__ == "__main__":
     final_df = pd.DataFrame({'folds': folds, 'test_auc': all_auc, 'test_acc': all_acc})
     if args.inference:
 	    label_dict={'CC': 0, 'EC': 1,'HGSC': 2, 'LGSC': 3, 'MC': 4}
-	    df = pd.read_csv(file_path)
+	    df = pd.read_csv('/kaggle/working/test.csv')
 	    submission = df[['image_id']]
 	    numbers_array = range(1, len(df) + 1)
 	    submission['label'] = numbers_array
