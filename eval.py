@@ -1606,11 +1606,7 @@ if __name__ == "__main__":
     print(pred, '왜 안나오냐..')
     final_df = pd.DataFrame({'folds': folds, 'test_auc': all_auc, 'test_acc': all_acc})
     if args.inference:
-	print(final_df)
-	final_df.to_csv(os.path.join('/kaggle/working/', 'summary.csv'))
-        pass
-    elif len(folds) != args.k:
-        save_name = 'summary_partial_{}_{}.csv'.format(folds[0], folds[-1])
-    else:
-        save_name = 'summary.csv'
+	    print(final_df)
+	    final_df.to_csv(os.path.join('/kaggle/working/', 'summary.csv'))
+	    pass
     
