@@ -178,6 +178,8 @@ from scipy import stats
 from torch.utils.data import Dataset
 import h5py
 
+from utils.utils import generate_split, nth
+
 def save_splits(split_datasets, column_keys, filename, boolean_style=False):
 	splits = [split_datasets[i].slide_data['slide_id'] for i in range(len(split_datasets))]
 	if not boolean_style:
@@ -228,7 +230,7 @@ class Generic_WSI_Classification_Dataset(Dataset):
 
 		slide_data = pd.read_csv(csv_path)
 		slide_data = self.filter_df(slide_data, filter_dict)
-		# slide_data = self.df_prep(slide_data, self.label_dict, ignore, self.label_col)
+		slide_data = self.df_prep(slide_data, self.label_dict, ignore, self.label_col)
 
 		###shuffle data
 		if shuffle:
@@ -237,11 +239,11 @@ class Generic_WSI_Classification_Dataset(Dataset):
 
 		self.slide_data = slide_data
 
-		# self.patient_data_prep(patient_voting)
-		# self.cls_ids_prep()
+		self.patient_data_prep(patient_voting)
+		self.cls_ids_prep()
 
-		# if print_info:
-		# 	self.summarize()
+		if print_info:
+			self.summarize()
 
 	def cls_ids_prep(self):
 		# store ids corresponding each class at the patient or case level
@@ -254,37 +256,37 @@ class Generic_WSI_Classification_Dataset(Dataset):
 		for i in range(self.num_classes):
 			self.slide_cls_ids[i] = np.where(self.slide_data['label'] == i)[0]
 
-	# def patient_data_prep(self, patient_voting='max'):
-		# patients = np.unique(np.array(self.slide_data['case_id'])) # get unique patients
-		# patient_labels = []
+	def patient_data_prep(self, patient_voting='max'):
+		patients = np.unique(np.array(self.slide_data['case_id'])) # get unique patients
+		patient_labels = []
 		
-		# for p in patients:
-		# 	locations = self.slide_data[self.slide_data['case_id'] == p].index.tolist()
-		# 	assert len(locations) > 0
-		# 	label = self.slide_data['label'][locations].values
-		# 	if patient_voting == 'max':
-		# 		label = label.max() # get patient label (MIL convention)
-		# 	elif patient_voting == 'maj':
-		# 		label = stats.mode(label)[0]
-		# 	else:
-		# 		raise NotImplementedError
-		# 	patient_labels.append(label)
+		for p in patients:
+			locations = self.slide_data[self.slide_data['case_id'] == p].index.tolist()
+			assert len(locations) > 0
+			label = self.slide_data['label'][locations].values
+			if patient_voting == 'max':
+				label = label.max() # get patient label (MIL convention)
+			elif patient_voting == 'maj':
+				label = stats.mode(label)[0]
+			else:
+				raise NotImplementedError
+			patient_labels.append(label)
 		
-		# self.patient_data = {'case_id':patients, 'label':np.array(patient_labels)}
+		self.patient_data = {'case_id':patients, 'label':np.array(patient_labels)}
 
-	# # @staticmethod
-	# def df_prep(data, label_dict, ignore, label_col):
-	# 	# if label_col != 'label':
-	# 	# 	data['label'] = data[label_col].copy()
+	@staticmethod
+	def df_prep(data, label_dict, ignore, label_col):
+		if label_col != 'label':
+			data['label'] = data[label_col].copy()
 
-	# 	# mask = data['label'].isin(ignore)
-	# 	# data = data[~mask]
-	# 	# data.reset_index(drop=True, inplace=True)
-	# 	# for i in data.index:
-	# 	# 	key = data.loc[i, 'label']
-	# 	# 	data.at[i, 'label'] = label_dict[key]
+		mask = data['label'].isin(ignore)
+		data = data[~mask]
+		data.reset_index(drop=True, inplace=True)
+		for i in data.index:
+			key = data.loc[i, 'label']
+			data.at[i, 'label'] = label_dict[key]
 
-	# 	return data
+		return data
 
 	def filter_df(self, df, filter_dict={}):
 		if len(filter_dict) > 0:
@@ -524,11 +526,12 @@ class Generic_Split(Generic_MIL_Dataset):
 		self.data_dir = data_dir
 		self.num_classes = num_classes
 		self.slide_cls_ids = [[] for i in range(self.num_classes)]
-		# for i in range(self.num_classes):
-		# 	self.slide_cls_ids[i] = np.where(self.slide_data['label'] == i)[0]
+		for i in range(self.num_classes):
+			self.slide_cls_ids[i] = np.where(self.slide_data['label'] == i)[0]
 
 	def __len__(self):
 		return len(self.slide_data)
+
 
 
 import numpy as np
