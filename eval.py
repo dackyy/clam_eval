@@ -1607,9 +1607,19 @@ if __name__ == "__main__":
     print('result \n',pred)
     final_df = pd.DataFrame({'folds': folds, 'test_auc': all_auc, 'test_acc': all_acc})
     if args.inference:
-        label_dict={'CC': 0, 'EC': 1,'HGSC': 2, 'LGSC': 3, 'MC': 4}
         df = pd.read_csv('/kaggle/working/test.csv')
         submission = df[['slide_id']]
+        for i, pr in enumerate(pred):
+            if pr == 1:
+                pr[i] = 'CC'
+            elif pr == 2:
+                pr[i] = 'EC'
+            elif pr == 3:
+                pr[i] = 'HGSC'
+            elif pr == 4:
+                pr[i] = 'LGSC'
+            elif pr == 5:
+                pr[i] = 'MC'
         submission['label'] = pred
         print(submission)
         submission.to_csv("submission.csv", index=False)
