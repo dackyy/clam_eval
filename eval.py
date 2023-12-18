@@ -1611,8 +1611,5 @@ if __name__ == "__main__":
         df = pd.read_csv('/kaggle/working/test.csv')
         print(df)
         submission = df[['slide_id']]
-        temp = []
-        for pr in pred:
-            temp.append(label_dict[pr])
-        submission['label'] = temp
+        df['label'] = pred
         print(submission)
