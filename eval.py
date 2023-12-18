@@ -1610,6 +1610,6 @@ if __name__ == "__main__":
         label_dict={'CC': 0, 'EC': 1,'HGSC': 2, 'LGSC': 3, 'MC': 4}
         df = pd.read_csv('/kaggle/working/test.csv')
         submission = df[['slide_id']]
-        df['label'] = pred
+        submission['label'] = pred
         print(submission)
         submission.to_csv("submission.csv", index=False)
