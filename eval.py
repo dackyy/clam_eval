@@ -108,15 +108,15 @@ class Generic_WSI_Classification_Dataset(Dataset):
 
 	@staticmethod
 	def df_prep(data, label_dict, ignore, label_col):
-		if label_col != 'label':
-			data['label'] = data[label_col].copy()
+		# if label_col != 'label':
+		# 	data['label'] = data[label_col].copy()
 
-		mask = data['label'].isin(ignore)
-		data = data[~mask]
-		data.reset_index(drop=True, inplace=True)
-		for i in data.index:
-			key = data.loc[i, 'label']
-			data.at[i, 'label'] = label_dict[key]
+		# mask = data['label'].isin(ignore)
+		# data = data[~mask]
+		# data.reset_index(drop=True, inplace=True)
+		# for i in data.index:
+		# 	key = data.loc[i, 'label']
+		# 	data.at[i, 'label'] = label_dict[key]
 
 		return data
 
@@ -995,7 +995,7 @@ elif args.task == 'noUS':
 
 
 elif args.task == 'kaggle':
-    args.n_classes = 2
+    args.n_classes = 5
     dataset = Generic_MIL_Dataset(csv_path='/kaggle/working/patch/process_list_autogen.csv',
                                   data_dir=os.path.join(
                                       args.data_root_dir, 'features'),
