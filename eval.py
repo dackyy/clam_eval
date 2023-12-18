@@ -1547,7 +1547,7 @@ f.close()
 print(settings)
 if args.task == 'kaggle':
     args.n_classes = 5
-    dataset = Generic_MIL_Dataset(csv_path='/kaggle/working/patch/process_list_autogen.csv',
+    dataset = Generic_MIL_Dataset(csv_path='/kaggle/working/test.csv',
                                   data_dir=os.path.join(
                                       args.data_root_dir, 'features'),
                                   shuffle=False,
