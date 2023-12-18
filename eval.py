@@ -106,7 +106,7 @@ class Generic_WSI_Classification_Dataset(Dataset):
 		
 		# self.patient_data = {'case_id':patients, 'label':np.array(patient_labels)}
 
-	@staticmethod
+	# @staticmethod
 	def df_prep(data, label_dict, ignore, label_col):
 		# if label_col != 'label':
 		# 	data['label'] = data[label_col].copy()
