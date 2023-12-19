@@ -1604,7 +1604,7 @@ if __name__ == "__main__":
     print('result \n',pred)
     final_df = pd.DataFrame({'folds': folds, 'test_auc': all_auc, 'test_acc': all_acc})
     if args.inference:
-        df = pd.read_csv('/kaggle/working/test.csv')
+        df = pd.read_csv('/tmp/work/test.csv')
         submission = df[['slide_id']]
         submission.rename(columns={'slide_id': 'image_id'}, inplace=True)
         temp = []
@@ -1622,4 +1622,4 @@ if __name__ == "__main__":
 
         submission['label'] = temp
         print(submission)
-        submission.to_csv("/kaggle/working/sub.csv", index=False)
+        submission.to_csv("/tmp/work/sub.csv", index=False)
