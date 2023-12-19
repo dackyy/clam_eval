@@ -1474,9 +1474,6 @@ def summary(model, loader, args):
 
 import numpy as np
 import sys
-sys.path.append('/kaggle/working/CLAM/*')
-sys.path.append('/kaggle/working/CLAM/utils/*')
-sys.path.append('/kaggle/working/CLAM/datasets/*')
 import argparse
 import torch
 import torch.nn as nn
@@ -1547,9 +1544,9 @@ f.close()
 print(settings)
 if args.task == 'kaggle':
     args.n_classes = 5
-    dataset = Generic_MIL_Dataset(csv_path='/kaggle/working/test.csv',
+    dataset = Generic_MIL_Dataset(csv_path='/tmp/work/test.csv',
                                   data_dir=os.path.join(
-                                      '/kaggle/working/features/pt_files/'),
+                                      '/tmp/work/features/pt_files/'),
                                   shuffle=False,
                                   print_info=True,
                                   label_dict={'CC': 0, 'EC': 1,
